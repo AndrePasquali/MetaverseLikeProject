@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using Genies.Extensions;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,7 +11,9 @@ namespace Genies.Menu
         private Queue<IMenuCommand> _menuCommands;
         private IMenuCommand _currentCommand;
 
+        [Header("Dependencies")]
         [SerializeField] private Material _characterMaterial;
+        [SerializeField] private Material _backgroundMaterial;
         [SerializeField] private Animator _characterAnimator;
 
         private void Start() => MenuButton.OnAnyButtonClick += OnButtonAction;
@@ -20,13 +24,8 @@ namespace Genies.Menu
             {
                 case MenuButton.ActionType.BackgroundColor:
                 {
-                    var pickedColor  = new Color(
-                        Random.Range(0f, 1f), 
-                        Random.Range(0f, 1f), 
-                        Random.Range(0f, 1f)
-                    );
-
-                    var backgroundColorCommand = new ChangeBackgroundColor(pickedColor);
+                    var color = new Color();
+                    var backgroundColorCommand = new ChangeBackgroundColor(_backgroundMaterial, color.PickRandom());
             
                     backgroundColorCommand.Execute();
                     break;
@@ -34,13 +33,9 @@ namespace Genies.Menu
 
                 case MenuButton.ActionType.CharacterColor:
                 {
-                    var pickedColor  = new Color(
-                        Random.Range(0f, 1f), 
-                        Random.Range(0f, 1f), 
-                        Random.Range(0f, 1f)
-                    );
-
-                    var characterColorChangeCommand = new ChangeCharacterColor(_characterMaterial, pickedColor);
+                    var color = new Color();
+                    
+                    var characterColorChangeCommand = new ChangeCharacterColor(_characterMaterial, color.PickRandom());
                     characterColorChangeCommand.Execute();
                     break;
                 }
@@ -66,5 +61,13 @@ namespace Genies.Menu
             }
            
         }
+
+        private void ResetColors()
+        {
+            _characterMaterial.color = Color.white;
+            _backgroundMaterial.color = Color.black;
+        }
+
+        private void OnDestroy() => ResetColors();
     }
 }

@@ -11,7 +11,7 @@ namespace Genies.Menu
         public int AnimationIndex
         {
             get => _animationIndex;
-            set
+            private set
             {
                 switch (value)
                 {
