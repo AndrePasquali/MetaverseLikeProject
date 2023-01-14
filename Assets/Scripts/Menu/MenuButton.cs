@@ -11,6 +11,7 @@ namespace Genies.Menu
         {
             BackgroundColor,
             CharacterColor,
+            CharacterHeadColor,
             AnimationA,
             AnimationB,
             AnimationC

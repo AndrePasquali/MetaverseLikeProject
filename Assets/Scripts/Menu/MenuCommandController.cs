@@ -13,6 +13,7 @@ namespace Genies.Menu
 
         [Header("Dependencies")]
         [SerializeField] private Material _characterMaterial;
+        [SerializeField] private Material _characterHeadMaterial;
         [SerializeField] private Material _backgroundMaterial;
         [SerializeField] private Animator _characterAnimator;
 
@@ -36,6 +37,15 @@ namespace Genies.Menu
                     var color = new Color();
                     
                     var characterColorChangeCommand = new ChangeCharacterColor(_characterMaterial, color.PickRandom());
+                    characterColorChangeCommand.Execute();
+                    break;
+                }
+                
+                case MenuButton.ActionType.CharacterHeadColor:
+                {
+                    var color = new Color();
+                    
+                    var characterColorChangeCommand = new ChangeCharacterHead(_characterHeadMaterial, color.PickRandom());
                     characterColorChangeCommand.Execute();
                     break;
                 }
@@ -65,6 +75,7 @@ namespace Genies.Menu
         private void ResetColors()
         {
             _characterMaterial.color = Color.white;
+            _characterHeadMaterial.color = Color.white;
             _backgroundMaterial.color = Color.black;
         }
 
