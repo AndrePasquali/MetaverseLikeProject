@@ -7,16 +7,27 @@ namespace Genies.Menu
     [RequireComponent(typeof(Button))]
     public class MenuButton: MonoBehaviour
     {
+        public enum ActionType
+        {
+            BackgroundColor,
+            CharacterColor,
+            AnimationA,
+            AnimationB,
+            AnimationC
+        }
+
+        public ActionType ButtonActionType;
+        
         private Button _button;
         public Button M_Button => _button ?? (_button = GetComponent<Button>());
 
-        public static event Action OnAnyButtonClick;
+        public static event Action<ActionType> OnAnyButtonClick;
 
         private void Start()
         {
             M_Button.onClick.AddListener(() =>
             {
-                OnAnyButtonClick.Invoke();
+                OnAnyButtonClick.Invoke(ButtonActionType);
             });
         }
 
