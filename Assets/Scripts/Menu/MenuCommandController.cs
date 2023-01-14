@@ -10,6 +10,7 @@ namespace Genies.Menu
         private IMenuCommand _currentCommand;
 
         [SerializeField] private Material _characterMaterial;
+        [SerializeField] private Animator _characterAnimator;
 
         private void Start() => MenuButton.OnAnyButtonClick += OnButtonAction;
 
@@ -41,6 +42,25 @@ namespace Genies.Menu
 
                     var characterColorChangeCommand = new ChangeCharacterColor(_characterMaterial, pickedColor);
                     characterColorChangeCommand.Execute();
+                    break;
+                }
+
+                case MenuButton.ActionType.AnimationA:
+                {
+                    var characterAnimationCommand = new PlayCharacterAnimation(_characterAnimator, 0);
+                    characterAnimationCommand.Execute();
+                    break;
+                }
+                case MenuButton.ActionType.AnimationB:
+                {
+                    var characterAnimationCommand = new PlayCharacterAnimation(_characterAnimator, 1);
+                    characterAnimationCommand.Execute();
+                    break;
+                }
+                case MenuButton.ActionType.AnimationC:
+                {
+                    var characterAnimationCommand = new PlayCharacterAnimation(_characterAnimator, 2);
+                    characterAnimationCommand.Execute();
                     break;
                 }
             }
