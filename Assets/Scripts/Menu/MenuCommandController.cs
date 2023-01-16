@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Genies.Extensions;
+using Genies.Menu.Enums;
 using UnityEngine;
 
 namespace Genies.Menu
@@ -14,66 +15,60 @@ namespace Genies.Menu
         [SerializeField] private Material _characterHeadMaterial;
         [SerializeField] private Material _backgroundMaterial;
         [SerializeField] private Animator _characterAnimator;
+        
 
         private void Start() => MenuButton.OnAnyButtonClick += OnButtonAction;
 
-        private void OnButtonAction(MenuButton.ActionType actionType)
+        private void OnButtonAction(MenuOption actionType, int actionItemId)
         {
             switch (actionType)
             {
-                case MenuButton.ActionType.BackgroundColor:
+                case MenuOption.BACKGROUND:
                 {
                     var color = new Color();
-                    var backgroundColorCommand = new ChangeBackgroundColor(_backgroundMaterial, color.PickRandom());
+                    var backgroundColorCommand = new ChangeBackgroundCommand(_backgroundMaterial, color.PickRandom());
 
                     backgroundColorCommand.Execute();
                     
                     break;
                 }
 
-                case MenuButton.ActionType.CharacterColor:
+                case MenuOption.BODY:
                 {
                     var color = new Color();
                     
-                    var characterColorChangeCommand = new ChangeCharacterColor(_characterMaterial, color.PickRandom());
+                    var characterColorChangeCommand = new CharacterBodyCommand(_characterMaterial, color.PickRandom());
                     characterColorChangeCommand.Execute();
                     break;
                 }
                 
-                case MenuButton.ActionType.CharacterHeadColor:
+                case MenuOption.HEAD:
                 {
                     var color = new Color();
                     
-                    var characterColorChangeCommand = new ChangeCharacterHead(_characterHeadMaterial, color.PickRandom());
+                    var characterColorChangeCommand = new CharacterHeadCommand(_characterHeadMaterial, color.PickRandom());
                     characterColorChangeCommand.Execute();
                     
                     break;
                 }
 
-                case MenuButton.ActionType.AnimationA:
+                case MenuOption.ANIMATION:
                 {
-                    var characterAnimationCommand = new PlayCharacterAnimation(_characterAnimator, 0);
+                    var characterAnimationCommand = new CharacterAnimationCommand(_characterAnimator, 0);
                     characterAnimationCommand.Execute();
                     
                     break;
                 }
-                case MenuButton.ActionType.AnimationB:
+                case MenuOption.HAT:
                 {
-                    var characterAnimationCommand = new PlayCharacterAnimation(_characterAnimator, 1);
+                    var characterAnimationCommand = new CharacterAnimationCommand(_characterAnimator, 0);
                     characterAnimationCommand.Execute();
                     
                     break;
                 }
-                case MenuButton.ActionType.AnimationC:
+                case MenuOption.GLASSES:
                 {
-                    var characterAnimationCommand = new PlayCharacterAnimation(_characterAnimator, 2);
-                    characterAnimationCommand.Execute();
-                    
-                    break;
-                }
-                case MenuButton.ActionType.AnimationD:
-                {
-                    var characterAnimationCommand = new PlayCharacterAnimation(_characterAnimator, 3);
+                    var characterAnimationCommand = new CharacterAnimationCommand(_characterAnimator, 0);
                     characterAnimationCommand.Execute();
                     
                     break;

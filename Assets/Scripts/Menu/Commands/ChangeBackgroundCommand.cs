@@ -2,12 +2,12 @@ using UnityEngine;
 
 namespace Genies.Menu
 {
-    public class ChangeBackgroundColor: IMenuCommand
+    public class ChangeBackgroundCommand: IMenuCommand
     {
         private readonly Color _colorToChange;
         private readonly Material _backgroundMaterial;
 
-        public ChangeBackgroundColor(Material backgroundMaterial, Color colorToChange)
+        public ChangeBackgroundCommand(Material backgroundMaterial, Color colorToChange)
         {
             _backgroundMaterial = backgroundMaterial;
             _colorToChange = colorToChange;

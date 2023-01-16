@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Genies.Menu
 {
-    public class PlayCharacterAnimation: IMenuCommand
+    public class CharacterAnimationCommand: IMenuCommand
     {
         private Animator _characterAnimator;
 
@@ -25,7 +25,7 @@ namespace Genies.Menu
         }
         private int _animationIndex { get; set; }
 
-        public PlayCharacterAnimation(Animator animator, int animationIndex)
+        public CharacterAnimationCommand(Animator animator, int animationIndex)
         {
             _characterAnimator = animator;
             AnimationIndex = animationIndex;
