@@ -1,15 +1,17 @@
 using Avatar.Equipment;
 using Genies.Menu.Enums;
+using UnityEngine;
 
 namespace Avatar
 {
     public class AvatarEquipment
     {
-        public MenuOption Category { get; set; }
+        public Hat AvatarHat { get; set; }
 
-        public Hat AvatarHat;
+        public Glasses AvatarGlasses { get; set; }
 
-        public Glasses AvatarGlasses;
+        public Color HeadColor { get; set; }
 
+        public Color BodyColor { get; set; }
     }
 }

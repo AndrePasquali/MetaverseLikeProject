@@ -2,8 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Avatar;
 using Avatar.Equipment;
-using Genies.Menu.Enums;
-using UnityEngine;
 
 namespace Genies.Menu
 {

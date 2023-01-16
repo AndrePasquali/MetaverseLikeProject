@@ -25,6 +25,5 @@ namespace Genies.Menu
                     e.SetEquipped(false);
             });
         }
-        
     }
 }

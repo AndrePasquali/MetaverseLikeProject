@@ -10,6 +10,7 @@ namespace Avatar.Equipment
         POLICE,
         SHOWER,
         SOMBRERO,
-        VIKING
+        VIKING,
+        DEFAULT,
     }
 }

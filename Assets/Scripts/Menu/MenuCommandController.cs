@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using System.Linq;
 using Avatar;
-using Genies.Extensions;
 using Genies.Menu.Enums;
 using UnityEngine;
 
@@ -20,8 +18,6 @@ namespace Genies.Menu
         [SerializeField] private List<MenuOptionButton> _menuOptionButtons;
         [SerializeField] private List<AvatarItemHat> _avatarItemHats;
         [SerializeField] private List<AvatarItemGlasses> _avatarItemGlasses;
-
-
 
         private void Start() => Initialize();
 
