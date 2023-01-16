@@ -14,5 +14,14 @@ namespace Genies.Extensions
 
             return pickedColor;
         }
+
+        public static Color SetAlpha(this Color color, float value)
+        {
+            var newColor = color;
+            newColor.a = value;
+            color = newColor;
+
+            return color;
+        }
     }
 }

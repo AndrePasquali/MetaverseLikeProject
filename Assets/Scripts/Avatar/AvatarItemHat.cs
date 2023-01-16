@@ -7,6 +7,17 @@ namespace Avatar
     {
         public Hat AvatarHat;
 
-        public bool Equipped;
+        public bool Equipped
+        {
+            get => _equipped;
+            private set
+            {
+                gameObject.SetActive(value);
+                _equipped = value;
+            }
+        }
+        private bool _equipped;
+
+        public void SetEquipped(bool equipped) => Equipped = equipped;
     }
 }

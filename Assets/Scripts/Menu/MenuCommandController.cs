@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Avatar;
 using Genies.Extensions;
 using Genies.Menu.Enums;
 using UnityEngine;
@@ -17,6 +18,9 @@ namespace Genies.Menu
         [SerializeField] private Material _backgroundMaterial;
         [SerializeField] private Animator _characterAnimator;
         [SerializeField] private List<MenuOptionButton> _menuOptionButtons;
+        [SerializeField] private List<AvatarItemHat> _avatarItemHats;
+        [SerializeField] private List<AvatarItemGlasses> _avatarItemGlasses;
+
 
 
         private void Start() => Initialize();
@@ -75,14 +79,16 @@ namespace Genies.Menu
                 }
                 case MenuOption.HAT:
                 {
-                    var characterAnimationCommand = new CharacterAnimationCommand(_characterAnimator, 0);
+                    var hat = item.GetComponent<MenuItemButtonHat>().AvatarHat;
+                    var characterAnimationCommand = new CharacterHatCommand(hat, _avatarItemHats);
                     characterAnimationCommand.Execute();
                     
                     break;
                 }
                 case MenuOption.GLASSES:
                 {
-                    var characterAnimationCommand = new CharacterAnimationCommand(_characterAnimator, 0);
+                    var glasses = item.GetComponent<MenuItemButtonGlasses>().AvatarGlasses;
+                    var characterAnimationCommand = new CharacterGlassesCommand(glasses, _avatarItemGlasses);
                     characterAnimationCommand.Execute();
                     
                     break;

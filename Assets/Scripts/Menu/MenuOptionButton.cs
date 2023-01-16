@@ -1,4 +1,6 @@
 using System;
+using DG.Tweening;
+using Genies.Extensions;
 using Genies.Menu.Enums;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,6 +23,9 @@ namespace Genies.Menu
             {
                 _enabled = value;
                 _optionPanel.gameObject.SetActive(value);
+
+                var image = GetComponent<Image>();
+                image.DOFade(value ? 0.5F : 1.0F, 0.5F);
             }
         }
         private bool _enabled;
