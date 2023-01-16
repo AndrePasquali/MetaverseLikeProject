@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using Genies.Extensions;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Genies.Menu
 {
@@ -27,8 +25,11 @@ namespace Genies.Menu
                 {
                     var color = new Color();
                     var backgroundColorCommand = new ChangeBackgroundColor(_backgroundMaterial, color.PickRandom());
-            
+
                     backgroundColorCommand.Execute();
+                    
+                    _currentCommand = backgroundColorCommand;
+                    _menuCommands.Enqueue(_currentCommand);
                     break;
                 }
 
@@ -38,6 +39,9 @@ namespace Genies.Menu
                     
                     var characterColorChangeCommand = new ChangeCharacterColor(_characterMaterial, color.PickRandom());
                     characterColorChangeCommand.Execute();
+                    
+                    _currentCommand = characterColorChangeCommand;
+                    _menuCommands.Enqueue(_currentCommand);
                     break;
                 }
                 
@@ -47,6 +51,9 @@ namespace Genies.Menu
                     
                     var characterColorChangeCommand = new ChangeCharacterHead(_characterHeadMaterial, color.PickRandom());
                     characterColorChangeCommand.Execute();
+                    
+                    _currentCommand = characterColorChangeCommand;
+                    _menuCommands.Enqueue(_currentCommand);
                     break;
                 }
 
@@ -54,18 +61,36 @@ namespace Genies.Menu
                 {
                     var characterAnimationCommand = new PlayCharacterAnimation(_characterAnimator, 0);
                     characterAnimationCommand.Execute();
+                    
+                    _currentCommand = characterAnimationCommand;
+                    _menuCommands.Enqueue(_currentCommand);
                     break;
                 }
                 case MenuButton.ActionType.AnimationB:
                 {
                     var characterAnimationCommand = new PlayCharacterAnimation(_characterAnimator, 1);
                     characterAnimationCommand.Execute();
+                    
+                    _currentCommand = characterAnimationCommand;
+                    _menuCommands.Enqueue(_currentCommand);
                     break;
                 }
                 case MenuButton.ActionType.AnimationC:
                 {
                     var characterAnimationCommand = new PlayCharacterAnimation(_characterAnimator, 2);
                     characterAnimationCommand.Execute();
+                    
+                    _currentCommand = characterAnimationCommand;
+                    _menuCommands.Enqueue(_currentCommand);
+                    break;
+                }
+                case MenuButton.ActionType.AnimationD:
+                {
+                    var characterAnimationCommand = new PlayCharacterAnimation(_characterAnimator, 3);
+                    characterAnimationCommand.Execute();
+                    
+                    _currentCommand = characterAnimationCommand;
+                    _menuCommands.Enqueue(_currentCommand);
                     break;
                 }
             }

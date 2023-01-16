@@ -14,7 +14,8 @@ namespace Genies.Menu
             CharacterHeadColor,
             AnimationA,
             AnimationB,
-            AnimationC
+            AnimationC,
+            AnimationD
         }
 
         public ActionType ButtonActionType;

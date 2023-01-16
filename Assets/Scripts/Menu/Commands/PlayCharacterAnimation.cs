@@ -15,10 +15,10 @@ namespace Genies.Menu
             {
                 switch (value)
                 {
-                    case 0: _animationClipName = "Jump"; break;
-                    case 1: _animationClipName = "Pickup"; break;
+                    case 0: _animationClipName = "Waving"; break;
+                    case 1: _animationClipName = "Excited"; break;
                     case 2: _animationClipName = "Wave"; break;
-                    case 3: _animationClipName = "Land"; break;
+                    case 3: _animationClipName = "Dancing"; break;
                 }
                 _animationIndex = value;
             }

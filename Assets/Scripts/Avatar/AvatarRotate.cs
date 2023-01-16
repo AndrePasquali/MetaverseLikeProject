@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class AvatarRotate : MonoBehaviour
 {
-    public float RotateSpeed = 90;
-
     private float _rotationX;
 
     private bool _clicked;
