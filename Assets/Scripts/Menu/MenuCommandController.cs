@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Genies.Extensions;
 using Genies.Menu.Enums;
 using UnityEngine;
@@ -15,18 +16,31 @@ namespace Genies.Menu
         [SerializeField] private Material _characterHeadMaterial;
         [SerializeField] private Material _backgroundMaterial;
         [SerializeField] private Animator _characterAnimator;
-        
+        [SerializeField] private List<MenuOptionButton> _menuOptionButtons;
 
-        private void Start() => MenuButton.OnAnyButtonClick += OnButtonAction;
 
-        private void OnButtonAction(MenuOption actionType, int actionItemId)
+        private void Start() => Initialize();
+
+        private void Initialize()
+        {
+            MenuOptionButton.OnOptionButtonClick += OnMenuButtonAction;
+            MenuItemButton.OnItemButtonClick += OnItemButtonAction;
+        }
+
+        private void OnMenuButtonAction(MenuOption actionType, GameObject optionPanel)
+        { 
+            var optionCommand = new ChangeOptionCommand(actionType, _menuOptionButtons); 
+            optionCommand.Execute();
+        }
+
+        private void OnItemButtonAction(MenuOption actionType, MenuItemButton item)
         {
             switch (actionType)
             {
                 case MenuOption.BACKGROUND:
                 {
-                    var color = new Color();
-                    var backgroundColorCommand = new ChangeBackgroundCommand(_backgroundMaterial, color.PickRandom());
+                    var color = item.GetColor();
+                    var backgroundColorCommand = new ChangeBackgroundCommand(_backgroundMaterial, color);
 
                     backgroundColorCommand.Execute();
                     
@@ -35,18 +49,18 @@ namespace Genies.Menu
 
                 case MenuOption.BODY:
                 {
-                    var color = new Color();
+                    var color = item.GetColor();
                     
-                    var characterColorChangeCommand = new CharacterBodyCommand(_characterMaterial, color.PickRandom());
+                    var characterColorChangeCommand = new CharacterBodyCommand(_characterMaterial, color);
                     characterColorChangeCommand.Execute();
                     break;
                 }
                 
                 case MenuOption.HEAD:
                 {
-                    var color = new Color();
+                    var color = item.GetColor();
                     
-                    var characterColorChangeCommand = new CharacterHeadCommand(_characterHeadMaterial, color.PickRandom());
+                    var characterColorChangeCommand = new CharacterHeadCommand(_characterHeadMaterial, color);
                     characterColorChangeCommand.Execute();
                     
                     break;

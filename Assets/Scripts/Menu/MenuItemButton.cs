@@ -6,12 +6,11 @@ using UnityEngine.UI;
 namespace Genies.Menu
 {
     [RequireComponent(typeof(Button))]
-    public class MenuButton: MonoBehaviour
+    public class MenuItemButton: MonoBehaviour, IColor
     {
         private Button _button;
         public Button M_Button => _button ?? (_button = GetComponent<Button>());
-
-        public static event Action<MenuOption, int> OnAnyButtonClick;
+        public static event Action<MenuOption, MenuItemButton> OnItemButtonClick;
 
         [SerializeField] private MenuOption _menuOption;
 
@@ -19,10 +18,15 @@ namespace Genies.Menu
         {
             M_Button.onClick.AddListener(() =>
             {
-                OnAnyButtonClick.Invoke(_menuOption, 0);
+                OnItemButtonClick.Invoke(_menuOption, this);
             });
         }
 
         private void OnDestroy() => M_Button.onClick.RemoveAllListeners();
+        public Color GetColor()
+        {
+            var image = GetComponent<Image>();
+            return image.color;
+        }
     }
 }
