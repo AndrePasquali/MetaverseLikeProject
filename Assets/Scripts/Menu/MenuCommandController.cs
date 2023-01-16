@@ -28,8 +28,6 @@ namespace Genies.Menu
 
                     backgroundColorCommand.Execute();
                     
-                    _currentCommand = backgroundColorCommand;
-                    _menuCommands.Enqueue(_currentCommand);
                     break;
                 }
 
@@ -39,9 +37,6 @@ namespace Genies.Menu
                     
                     var characterColorChangeCommand = new ChangeCharacterColor(_characterMaterial, color.PickRandom());
                     characterColorChangeCommand.Execute();
-                    
-                    _currentCommand = characterColorChangeCommand;
-                    _menuCommands.Enqueue(_currentCommand);
                     break;
                 }
                 
@@ -52,8 +47,6 @@ namespace Genies.Menu
                     var characterColorChangeCommand = new ChangeCharacterHead(_characterHeadMaterial, color.PickRandom());
                     characterColorChangeCommand.Execute();
                     
-                    _currentCommand = characterColorChangeCommand;
-                    _menuCommands.Enqueue(_currentCommand);
                     break;
                 }
 
@@ -62,8 +55,6 @@ namespace Genies.Menu
                     var characterAnimationCommand = new PlayCharacterAnimation(_characterAnimator, 0);
                     characterAnimationCommand.Execute();
                     
-                    _currentCommand = characterAnimationCommand;
-                    _menuCommands.Enqueue(_currentCommand);
                     break;
                 }
                 case MenuButton.ActionType.AnimationB:
@@ -71,8 +62,6 @@ namespace Genies.Menu
                     var characterAnimationCommand = new PlayCharacterAnimation(_characterAnimator, 1);
                     characterAnimationCommand.Execute();
                     
-                    _currentCommand = characterAnimationCommand;
-                    _menuCommands.Enqueue(_currentCommand);
                     break;
                 }
                 case MenuButton.ActionType.AnimationC:
@@ -80,8 +69,6 @@ namespace Genies.Menu
                     var characterAnimationCommand = new PlayCharacterAnimation(_characterAnimator, 2);
                     characterAnimationCommand.Execute();
                     
-                    _currentCommand = characterAnimationCommand;
-                    _menuCommands.Enqueue(_currentCommand);
                     break;
                 }
                 case MenuButton.ActionType.AnimationD:
@@ -89,8 +76,6 @@ namespace Genies.Menu
                     var characterAnimationCommand = new PlayCharacterAnimation(_characterAnimator, 3);
                     characterAnimationCommand.Execute();
                     
-                    _currentCommand = characterAnimationCommand;
-                    _menuCommands.Enqueue(_currentCommand);
                     break;
                 }
             }
