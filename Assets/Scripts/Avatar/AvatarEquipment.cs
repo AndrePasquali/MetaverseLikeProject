@@ -18,7 +18,15 @@ namespace Avatar
 
         private void Start()
         {
-            if(!AI) RestoreEquipment();
+            if (!AI)
+            {
+                RestoreEquipment();
+            }
+            else
+            {
+                HeadColor = new Material(HeadColor);
+                BodyColor = new Material(HeadColor);
+            }
         }
 
         private void RestoreEquipment()

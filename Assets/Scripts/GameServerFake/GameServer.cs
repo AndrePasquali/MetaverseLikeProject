@@ -38,9 +38,7 @@ namespace GameServerFake
                 {
                     var json = Json<List<Inventory>>.Load(GameConstants.INVENTORY_FULLPATH);
                     
-                    AvatarInventory.AddRange(json); 
-                    
-                    Debug.Log(AvatarInventory.Count);
+                    AvatarInventory.AddRange(json);
                 }
                 catch (Exception e)
                 {
@@ -52,11 +50,11 @@ namespace GameServerFake
                 var mockInventory = new Inventory
                 {
                     PlayerId = 0,
-                    AvatarHat = Hat.POLICE,
-                    AvatarGlasses = Glasses.AVIATOR,
+                    AvatarHat = Hat.DEFAULT,
+                    AvatarGlasses = Glasses.DEFAULT,
                     BodyColor = Color.white.ToHexString(),
                     HeadColor = Color.white.ToHexString(),
-                    BackgroundColor = Color.blue.ToHexString()
+                    BackgroundColor = Color.cyan.ToHexString()
                 };
                 
                 AvatarInventory.Add(mockInventory);

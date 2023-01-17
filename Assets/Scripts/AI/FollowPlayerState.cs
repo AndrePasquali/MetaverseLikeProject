@@ -13,7 +13,7 @@ namespace Genies.AI
         private Transform _player;
         private NavMeshAgent _agent;
         private Animator _animator;
-        private List<string> _animation = new List<string>{"Wave", "Waving", "Excited", "Dancing"};
+        private List<string> _animation = new List<string>{"Wave", "Waving", "Excited", "Dancing", "Jumping", "HipHop"};
 
         public FollowPlayerState(AIStateMachine stateMachine, Transform player, NavMeshAgent agent, Animator animator)
         {
@@ -23,7 +23,7 @@ namespace Genies.AI
             _animator = animator;
         }
 
-        public async void Update()
+        public async void UpdateState()
         {
            _agent.destination = _player.position;
 

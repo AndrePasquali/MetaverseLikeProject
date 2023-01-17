@@ -13,9 +13,13 @@ namespace Genies.Menu
 
         [SerializeField] private CanvasGroup _optionsPanelCanvas;
         [SerializeField] private TMP_Text _optionButtonLabel;
+        
+        [SerializeField] private BoxCollider _avatarCollider;
+        [SerializeField] private GameObject _fade;
 
         private void Start()
         {
+            _fade.gameObject.SetActive(true);
             _toggleMenuButton.onClick.AddListener(MenuToggle);
         }
 
@@ -29,7 +33,11 @@ namespace Genies.Menu
                     .OnStart(() => { _optionsPanelCanvas.DOFade(1, 0.5F); });
             }
 
-            _optionButtonLabel.text = _optionsPanel.activeSelf ? "SAVE" : "EDIT";
+            var buttonEnabled = _optionsPanel.activeSelf;
+
+            _avatarCollider.enabled = !buttonEnabled;
+
+            _optionButtonLabel.text = buttonEnabled ? "SAVE" : "EDIT";
         }
 
     }

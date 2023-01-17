@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Genies.Animations
@@ -17,6 +18,8 @@ namespace Genies.Animations
         public Image Image => _image ?? (_image = GetComponent<Image>());
 
         private Image _image;
+
+        [SerializeField] protected UnityEvent OnAnimationFinishedEvent;
         
 
         public enum AnimationState
@@ -26,14 +29,31 @@ namespace Genies.Animations
             Finished
         }
 
-        public AnimationState CurrentAnimationState = AnimationState.Stopped;
-        
+        public AnimationState CurrentAnimationState
+        {
+            get => _currentAnimationState;
+            set
+            {
+                _currentAnimationState = value;
+
+                switch (value)
+                {
+                    case AnimationState.Finished: OnAnimationFinished(); break;
+                }
+            }
+        }
+        private AnimationState _currentAnimationState;
         private void Start()
         {
             if(_autoRun) StartAnimation();
         }
 
-        protected abstract void StartAnimation();
+        public abstract void StartAnimation();
+
+        protected virtual void OnAnimationFinished()
+        {
+            OnAnimationFinishedEvent?.Invoke();
+        }
 
         protected void ChangeState(AnimationState newState) => CurrentAnimationState = newState;
     }

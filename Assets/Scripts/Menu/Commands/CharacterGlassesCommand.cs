@@ -8,18 +8,24 @@ namespace Genies.Menu
     public class CharacterGlassesCommand
     {
         private Glasses _glasses;
-        private List<AvatarItemGlasses> _itemsHat;
-        public CharacterGlassesCommand(Glasses avatarHat, List<AvatarItemGlasses> itemsHat)
+        private List<AvatarItemGlasses> _itemsGlasses;
+        public CharacterGlassesCommand(Glasses avatarGlasses, List<AvatarItemGlasses> itemsGlasses)
         {
-            _glasses = avatarHat;
-            _itemsHat = itemsHat;
+            _glasses = avatarGlasses;
+            _itemsGlasses = itemsGlasses;
         }
         public void Execute()
         {
-            var itemToEquip = _itemsHat.FirstOrDefault(e => e.AvatarGlasses == _glasses);
+            if (_glasses == Glasses.DEFAULT)
+            {
+                _itemsGlasses.ForEach(e => e.SetEquipped(false));
+                return;
+            }
+            
+            var itemToEquip = _itemsGlasses.FirstOrDefault(e => e.AvatarGlasses == _glasses);
             itemToEquip.SetEquipped(true);
             
-            _itemsHat.ForEach(e =>
+            _itemsGlasses.ForEach(e =>
             {
                 if(e.AvatarGlasses != _glasses)
                     e.SetEquipped(false);

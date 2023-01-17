@@ -4,6 +4,8 @@ namespace Avatar.Equipment
     {
         AVIATOR,
         BLUE,
+        COP,
+        RAY,
         DEFAULT
     }
 }

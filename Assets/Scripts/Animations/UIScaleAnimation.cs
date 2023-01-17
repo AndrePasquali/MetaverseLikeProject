@@ -11,7 +11,7 @@ namespace Genies.Animations
         [SerializeField] private float _elasticity = 0;
         [SerializeField] private int _loops = -1;
         
-        protected override void StartAnimation()
+        public override void StartAnimation()
         {
             ChangeState(AnimationState.Running);
             transform.DOPunchScale(new Vector3(_maxScale, _maxScale, _maxScale), Duration, _vibrato, _elasticity)

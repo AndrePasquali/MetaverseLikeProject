@@ -21,7 +21,7 @@ namespace Genies.AI
             _currentDestination = wayPoints[Random.Range(0, _wayPoints.Length - 1)];
         }
 
-        public async void Update()
+        public async void UpdateState()
         {
             _agent.SetDestination(_currentDestination.position);
 

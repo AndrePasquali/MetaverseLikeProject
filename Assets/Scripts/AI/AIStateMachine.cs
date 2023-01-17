@@ -31,7 +31,7 @@ namespace Genies.AI
 
         private void Update()
         {
-            CurrentState.Update();
+            CurrentState.UpdateState();
             UpdateAnimator();
         }
 

@@ -16,7 +16,14 @@ namespace Genies.Menu
         }
         public void Execute()
         {
+            if (_hat == Hat.DEFAULT)
+            {
+                _itemsHat.ForEach(e => e.SetEquipped(false));
+                return;
+            }
+            
             var itemToEquip = _itemsHat.FirstOrDefault(e => e.AvatarHat == _hat);
+            
             itemToEquip.SetEquipped(true);
             
             _itemsHat.ForEach(e =>

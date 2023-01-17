@@ -4,7 +4,7 @@ namespace Genies.Animations
 {
     public sealed class UIFadeInAnimation: UIAnimation
     {
-        protected override void StartAnimation()
+        public override void StartAnimation()
         {
             ChangeState(AnimationState.Running);
         

@@ -1,13 +1,12 @@
 using System;
 using DG.Tweening;
+using UnityEngine;
 
 namespace Genies.Animations
 {
     public sealed class UIFadeOutAnimation: UIAnimation
     {
-        private void Awake() => Image.DOFade(0, 0);
-
-        protected override void StartAnimation()
+        public override void StartAnimation()
         {
             ChangeState(AnimationState.Running);
         

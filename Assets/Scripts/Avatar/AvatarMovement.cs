@@ -256,8 +256,8 @@ namespace Genies.Avatar
             float mouseX = mousePos.x - Screen.width / 2;
             float mouseY = mousePos.y - Screen.height / 2;
 
-            transform.Rotate(new Vector3(0, mouseX, 0) * m_sensitivity * Time.deltaTime);
-            transform.Rotate(new Vector3(-mouseY, 0, 0) * m_sensitivity * Time.deltaTime);
+          //  transform.Rotate(new Vector3(0, mouseX, 0) * m_sensitivity * Time.deltaTime);
+            //transform.Rotate(new Vector3(-mouseY, 0, 0) * m_sensitivity * Time.deltaTime);
 
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");

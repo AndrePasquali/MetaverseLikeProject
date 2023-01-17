@@ -5,7 +5,7 @@ namespace Genies.Animations
 {
     public sealed class UIRotateAnimation: UIAnimation
     {
-        protected override void StartAnimation()
+        public override void StartAnimation()
         {
             ChangeState(AnimationState.Running);
             
