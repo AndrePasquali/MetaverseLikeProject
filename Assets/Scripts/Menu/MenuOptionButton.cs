@@ -1,6 +1,5 @@
 using System;
 using DG.Tweening;
-using Genies.Extensions;
 using Genies.Menu.Enums;
 using UnityEngine;
 using UnityEngine.UI;
