@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Avatar;
+using GameServerFake;
 using Genies.Menu.Enums;
 using UnityEngine;
 
@@ -23,6 +24,8 @@ namespace Genies.Menu
 
         private void Initialize()
         {
+            GameServer.Initialize();
+            
             MenuOptionButton.OnOptionButtonClick += OnMenuButtonAction;
             MenuItemButton.OnItemButtonClick += OnItemButtonAction;
         }
