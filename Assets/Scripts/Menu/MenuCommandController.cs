@@ -4,6 +4,7 @@ using GameServerFake;
 using Genies.Inventory;
 using Genies.Menu.Enums;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Genies.Menu
 {
@@ -76,7 +77,8 @@ namespace Genies.Menu
 
                 case MenuOption.ANIMATION:
                 {
-                    var characterAnimationCommand = new CharacterAnimationCommand(_characterAnimator, 0);
+                    var animationName = item.GetComponent<MenuItemButtonAnimation>().AnimationName;
+                    var characterAnimationCommand = new CharacterAnimationCommand(_characterAnimator, animationName);
                     characterAnimationCommand.Execute();
                     
                     break;
@@ -84,20 +86,24 @@ namespace Genies.Menu
                 case MenuOption.HAT:
                 {
                     var hat = item.GetComponent<MenuItemButtonHat>().AvatarHat;
-                    var characterAnimationCommand = new CharacterHatCommand(hat, _avatarItemHats);
-                    characterAnimationCommand.Execute();
+                    var characterHatCommand = new CharacterHatCommand(hat, _avatarItemHats);
+                    characterHatCommand.Execute();
                     
                     _inventoryManager.UpdateHat(hat, 0);
+                    
+                    HandleAnimation();
                     
                     break;
                 }
                 case MenuOption.GLASSES:
                 {
                     var glasses = item.GetComponent<MenuItemButtonGlasses>().AvatarGlasses;
-                    var characterAnimationCommand = new CharacterGlassesCommand(glasses, _avatarItemGlasses);
-                    characterAnimationCommand.Execute();
+                    var characterGlassesCommand = new CharacterGlassesCommand(glasses, _avatarItemGlasses);
+                    characterGlassesCommand.Execute();
                     
                     _inventoryManager.UpdateGlasses(glasses, 0);
+                    
+                    HandleAnimation();
                     
                     break;
                 }
@@ -105,9 +111,20 @@ namespace Genies.Menu
            
         }
 
-        private void RestorePreviousEquipment()
+        private void HandleAnimation()
         {
+            var allAnimationClipNames = new List<string>{"Wave", "Waving", "Dancing"};
+            var animationToPlay = allAnimationClipNames[Random.Range(0, allAnimationClipNames.Count)];
             
+            var probability = 3;
+            var randomNumber = Random.Range(0, 10);
+
+            if (randomNumber <= probability)
+            {
+                var characterAnimationCommand = new CharacterAnimationCommand(_characterAnimator, animationToPlay);
+                characterAnimationCommand.Execute();
+            }
+                
         }
 
         private void ResetColors()

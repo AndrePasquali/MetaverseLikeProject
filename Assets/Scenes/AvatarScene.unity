@@ -1325,6 +1325,100 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &116622215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 116622216}
+  - component: {fileID: 116622219}
+  - component: {fileID: 116622218}
+  - component: {fileID: 116622220}
+  m_Layer: 5
+  m_Name: Fade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &116622216
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116622215}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 935531110}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &116622218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116622215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &116622219
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116622215}
+  m_CullTransparentMesh: 1
+--- !u!114 &116622220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116622215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6b66295f1c480fb1ee95ceac220ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Duration: 1
+  EaseMode: 17
+  LoopType: 2
+  _autoRun: 1
+  CurrentAnimationState: 0
 --- !u!1 &135313695
 GameObject:
   m_ObjectHideFlags: 0
@@ -3963,8 +4057,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 215084788}
   m_HandleRect: {fileID: 215084787}
   m_Direction: 0
-  m_Value: -0.00000023049547
-  m_Size: 0.85536385
+  m_Value: -0.00000023049526
+  m_Size: 0.8553637
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9485,6 +9579,7 @@ RectTransform:
   - {fileID: 2013504828}
   - {fileID: 2134004795}
   - {fileID: 1673163234}
+  - {fileID: 116622216}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11425,9 +11520,9 @@ GameObject:
   - component: {fileID: 1080657728}
   - component: {fileID: 1080657727}
   - component: {fileID: 1080657726}
-  - component: {fileID: 1080657725}
+  - component: {fileID: 1080657729}
   m_Layer: 5
-  m_Name: CowboyHat
+  m_Name: AnimationA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11453,19 +11548,6 @@ RectTransform:
   m_AnchoredPosition: {x: 150, y: -150}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1080657725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1080657723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97001534fa3b4dc2a4da184544c1e862, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AvatarGlasses: 1
 --- !u!114 &1080657726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11530,7 +11612,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5690d3a66a4304945934da88a38a789f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 64585ad4332bd424bbc6cced21e14b94, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -11548,6 +11630,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080657723}
   m_CullTransparentMesh: 0
+--- !u!114 &1080657729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080657723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df72f0d711aa4671abcc6768f627172a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuOption: 3
+  AnimationName: Wave
 --- !u!1 &1092773879
 GameObject:
   m_ObjectHideFlags: 0
@@ -12995,9 +13091,9 @@ GameObject:
   - component: {fileID: 1166107745}
   - component: {fileID: 1166107744}
   - component: {fileID: 1166107743}
-  - component: {fileID: 1166107742}
+  - component: {fileID: 1166107746}
   m_Layer: 5
-  m_Name: CowboyHat (2)
+  m_Name: AnimationC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13023,19 +13119,6 @@ RectTransform:
   m_AnchoredPosition: {x: 765.4, y: -150}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1166107742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1166107740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97001534fa3b4dc2a4da184544c1e862, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AvatarGlasses: 1
 --- !u!114 &1166107743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13100,7 +13183,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5690d3a66a4304945934da88a38a789f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e5e5b4a33855456fad09122cb188b3b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -13118,6 +13201,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166107740}
   m_CullTransparentMesh: 0
+--- !u!114 &1166107746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166107740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df72f0d711aa4671abcc6768f627172a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuOption: 3
+  AnimationName: Dancing
 --- !u!1 &1171249583
 GameObject:
   m_ObjectHideFlags: 0
@@ -13593,9 +13690,9 @@ GameObject:
   - component: {fileID: 1185195109}
   - component: {fileID: 1185195108}
   - component: {fileID: 1185195107}
-  - component: {fileID: 1185195106}
+  - component: {fileID: 1185195110}
   m_Layer: 5
-  m_Name: CowboyHat (1)
+  m_Name: AnimationB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13621,19 +13718,6 @@ RectTransform:
   m_AnchoredPosition: {x: 457.7, y: -150}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1185195106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1185195104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97001534fa3b4dc2a4da184544c1e862, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AvatarGlasses: 0
 --- !u!114 &1185195107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13698,7 +13782,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2b3929c564350497bb681d2f978aab87, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5f7cd0ab3612c4eb3af0d8ebbf1bad07, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -13716,6 +13800,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185195104}
   m_CullTransparentMesh: 0
+--- !u!114 &1185195110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185195104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df72f0d711aa4671abcc6768f627172a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuOption: 3
+  AnimationName: Waving
 --- !u!4 &1208712162 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7118690548311268357, guid: c93202d1aa7bf4470a3c96ef0c617a9c, type: 3}
@@ -16784,7 +16882,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 967838295}
   m_HandleRect: {fileID: 967838294}
   m_Direction: 0
-  m_Value: -0.0000003448315
+  m_Value: -0.00000051724726
   m_Size: 0.8156251
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -18101,6 +18199,7 @@ GameObject:
   - component: {fileID: 1673163238}
   - component: {fileID: 1673163237}
   - component: {fileID: 1673163240}
+  - component: {fileID: 1673163241}
   m_Layer: 5
   m_Name: MenuPlay
   m_TagString: Untagged
@@ -18223,6 +18322,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f581b535555e4c9ab35c53c20ae264a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1673163241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673163233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e072b0d5efc46958256793a24216d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Duration: 2
+  EaseMode: 31
+  LoopType: 2
+  _autoRun: 1
+  CurrentAnimationState: 0
+  _maxScale: 0.1
+  _delay: 5
+  _vibrato: 0
+  _elasticity: 0
+  _loops: -1
 --- !u!1 &1677770557
 GameObject:
   m_ObjectHideFlags: 0
@@ -20887,7 +21008,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1879741818}
   m_HandleRect: {fileID: 1879741817}
   m_Direction: 0
-  m_Value: -0.00000011839305
+  m_Value: 0
   m_Size: 0.60298955
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -21041,7 +21162,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.6029895, y: 1}
+  m_AnchorMax: {x: 0.60298955, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
