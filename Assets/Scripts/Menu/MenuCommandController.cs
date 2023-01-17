@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Avatar;
 using GameServerFake;
+using Genies.Inventory;
 using Genies.Menu.Enums;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace Genies.Menu
     {
         private Queue<IMenuCommand> _menuCommands;
         private IMenuCommand _currentCommand;
+        private InventoryManager _inventoryManager = new InventoryManager();
 
         [Header("Dependencies")]
         [SerializeField] private Material _characterMaterial;
@@ -56,6 +58,8 @@ namespace Genies.Menu
                     
                     var characterColorChangeCommand = new CharacterBodyCommand(_characterMaterial, color);
                     characterColorChangeCommand.Execute();
+                    
+                    _inventoryManager.UpdateBody(color, 0);
                     break;
                 }
                 
@@ -66,6 +70,7 @@ namespace Genies.Menu
                     var characterColorChangeCommand = new CharacterHeadCommand(_characterHeadMaterial, color);
                     characterColorChangeCommand.Execute();
                     
+                    _inventoryManager.UpdateHead(color, 0);
                     break;
                 }
 
@@ -82,6 +87,8 @@ namespace Genies.Menu
                     var characterAnimationCommand = new CharacterHatCommand(hat, _avatarItemHats);
                     characterAnimationCommand.Execute();
                     
+                    _inventoryManager.UpdateHat(hat, 0);
+                    
                     break;
                 }
                 case MenuOption.GLASSES:
@@ -90,10 +97,17 @@ namespace Genies.Menu
                     var characterAnimationCommand = new CharacterGlassesCommand(glasses, _avatarItemGlasses);
                     characterAnimationCommand.Execute();
                     
+                    _inventoryManager.UpdateGlasses(glasses, 0);
+                    
                     break;
                 }
             }
            
+        }
+
+        private void RestorePreviousEquipment()
+        {
+            
         }
 
         private void ResetColors()

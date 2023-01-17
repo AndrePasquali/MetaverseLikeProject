@@ -18,7 +18,9 @@ namespace Genies.Avatar
             Direct
         }
 
+        [SerializeField] private bool use_mouseInput;
         [SerializeField] private float m_moveSpeed = 2;
+        [SerializeField] private float m_sensitivity = 2.0F;
         [SerializeField] private float m_turnSpeed = 200;
         [SerializeField] private float m_jumpForce = 4;
 
@@ -143,7 +145,9 @@ namespace Genies.Avatar
                     break;
 
                 case ControlMode.Tank:
-                    TankUpdate();
+                    if(use_mouseInput)
+                        ProcessMouseInput();
+                    else TankUpdate();
                     break;
 
                 default:
@@ -243,6 +247,22 @@ namespace Genies.Avatar
             {
                 m_animator.SetTrigger("Jump");
             }
+        }
+
+        private void ProcessMouseInput()
+        {
+            Vector3 mousePos = Input.mousePosition;
+
+            float mouseX = mousePos.x - Screen.width / 2;
+            float mouseY = mousePos.y - Screen.height / 2;
+
+            transform.Rotate(new Vector3(0, mouseX, 0) * m_sensitivity * Time.deltaTime);
+            transform.Rotate(new Vector3(-mouseY, 0, 0) * m_sensitivity * Time.deltaTime);
+
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+
+            transform.Translate(new Vector3(horizontal, 0, vertical) * m_moveSpeed * Time.deltaTime);
         }
     }
 }

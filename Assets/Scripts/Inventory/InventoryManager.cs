@@ -111,7 +111,7 @@ namespace Genies.Inventory
         }
 
         /// <summary>
-        /// Return the inventory with lastest state of the player
+        /// Return the inventory with latest state of the player
         /// </summary>
         /// <returns></returns>
         public List<Inventory> GetInventory()
