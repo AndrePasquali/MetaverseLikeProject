@@ -37,7 +37,7 @@ namespace Genies.Inventory
         public void UpdateHat(Hat newHat, int playerId)
         {
             var inventory = GetInventory();
-
+            
             var targetUserInventory = inventory.FirstOrDefault(e => e.PlayerId == playerId);
 
             targetUserInventory.AvatarHat = newHat;
@@ -55,7 +55,7 @@ namespace Genies.Inventory
             var inventory = GetInventory();
 
             var targetUserInventory = inventory.FirstOrDefault(e => e.PlayerId == playerId);
-
+            
             targetUserInventory.AvatarGlasses = newGlasses;
             
             GameServer.SendPacket(GameServer.HTTP_METHOD.POST, GameServer.REQUEST_TYPE.INVENTORY, targetUserInventory, playerId);

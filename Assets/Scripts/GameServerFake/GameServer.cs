@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Avatar.Equipment;
 using Genies.Inventory;
 using IO;
@@ -10,6 +11,9 @@ using UnityEngine;
 
 namespace GameServerFake
 {
+    /// <summary>
+    /// This class intends to create a kind of basic Game Server simulator. That will be responsible for record and providing some data
+    /// </summary>
     public static class GameServer
     {
         public enum HTTP_METHOD
@@ -37,8 +41,9 @@ namespace GameServerFake
                 try
                 {
                     var json = Json<List<Inventory>>.Load(GameConstants.INVENTORY_FULLPATH);
-                    
+
                     AvatarInventory.AddRange(json);
+                    
                 }
                 catch (Exception e)
                 {
@@ -56,7 +61,7 @@ namespace GameServerFake
                     HeadColor = Color.white.ToHexString(),
                     BackgroundColor = Color.cyan.ToHexString()
                 };
-                
+
                 AvatarInventory.Add(mockInventory);
 
                 Json<List<Inventory>>.Save(AvatarInventory, GameConstants.INVENTORY_FULLPATH);

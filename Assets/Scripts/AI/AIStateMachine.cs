@@ -3,6 +3,9 @@ using UnityEngine.AI;
 
 namespace Genies.AI
 { 
+    /// <summary>
+    /// Class responsible for basic AI for the Game. I have tried  make it with State Design Pattern. Due of the deadline, it is unfinished.
+    /// </summary>
     [RequireComponent(typeof(NavMeshAgent))]
     public class AIStateMachine : MonoBehaviour
     {

@@ -39,6 +39,11 @@ namespace Genies.Menu
             optionCommand.Execute();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="actionType"></param>
+        /// <param name="item"></param>
         private void OnItemButtonAction(MenuOption actionType, MenuItemButton item)
         {
             switch (actionType)
@@ -49,6 +54,8 @@ namespace Genies.Menu
                     var backgroundColorCommand = new ChangeBackgroundCommand(_backgroundMaterial, color);
 
                     backgroundColorCommand.Execute();
+                    
+                    _inventoryManager.UpdateBackground(color, 0);
                     
                     break;
                 }
@@ -111,9 +118,12 @@ namespace Genies.Menu
            
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void HandleAnimation()
         {
-            var allAnimationClipNames = new List<string>{"Wave", "Waving", "Dancing"};
+            var allAnimationClipNames = new List<string>{"Wave", "Waving", "Dancing", "HipHop", "Jumping"};
             var animationToPlay = allAnimationClipNames[Random.Range(0, allAnimationClipNames.Count)];
             
             var probability = 3;
@@ -127,6 +137,9 @@ namespace Genies.Menu
                 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void ResetColors()
         {
             _characterMaterial.color = Color.white;

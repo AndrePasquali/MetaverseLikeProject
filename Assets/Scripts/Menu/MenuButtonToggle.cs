@@ -17,28 +17,42 @@ namespace Genies.Menu
         [SerializeField] private BoxCollider _avatarCollider;
         [SerializeField] private GameObject _fade;
 
+        [SerializeField] private CanvasGroup _panelCanvas;
+
+        [SerializeField]
+        private CanvasGroup PanelCanvas => _panelCanvas ?? (_panelCanvas = _optionsPanel.GetComponent<CanvasGroup>());
+
+        private bool _toggleEnabled;
+        
+
         private void Start()
         {
             _fade.gameObject.SetActive(true);
-            _toggleMenuButton.onClick.AddListener(MenuToggle);
+            _toggleMenuButton.onClick.AddListener(HandleToggle);
         }
 
-        private void MenuToggle()
+        private void HandleToggle()
         {
-            _optionsPanel.SetActive(!_optionsPanel.activeSelf);
+            _toggleEnabled = !_toggleEnabled;
+            
+            HandleMenu();
+        }
 
-            if (_optionsPanel.activeSelf)
-            {
-                _optionsPanel.transform.DOPunchScale(new Vector3(0.2F, 0.1F, 0.1F), 0.35F, 1, 0.1F)
-                    .OnStart(() => { _optionsPanelCanvas.DOFade(1, 0.5F); });
-            }
+        private void HandleMenu()
+        {
+            if (_toggleEnabled) PanelCanvas.DOFade(1, 0.5F).OnComplete(() =>
+                {
+                    _optionsPanel.transform.DOPunchScale(new Vector3(0.2F, 0.1F, 0.1F), 0.15F, 2, 0.1F);
+                });
 
-            var buttonEnabled = _optionsPanel.activeSelf;
+            var buttonEnabled = _toggleEnabled;
 
             _avatarCollider.enabled = !buttonEnabled;
 
             _optionButtonLabel.text = buttonEnabled ? "SAVE" : "EDIT";
-        }
 
+            if (!buttonEnabled) PanelCanvas.DOFade(0, 0.25F);
+            
+        }
     }
 }

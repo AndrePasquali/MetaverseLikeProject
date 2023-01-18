@@ -52,8 +52,8 @@ namespace Avatar
                     PlayerId = i+1,
                     AvatarHat = (Hat)Random.Range(0, Enum.GetValues(typeof(Hat)).Length) - 1,
                     AvatarGlasses = (Glasses)Random.Range(0, Enum.GetValues(typeof(Glasses)).Length) - 1,
-                    BodyColor = new Color().PickRandom().ToHexString(),
-                    HeadColor = new Color().PickRandom().ToHexString()
+                    BodyColor = Color.white.ToHexString(),
+                    HeadColor = Color.white.ToHexString()
                 });
             }
         }

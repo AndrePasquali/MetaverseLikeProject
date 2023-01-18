@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Avatar.Equipment;
 using Genies.Inventory;
 using UnityEngine;
 
@@ -18,15 +19,7 @@ namespace Avatar
 
         private void Start()
         {
-            if (!AI)
-            {
-                RestoreEquipment();
-            }
-            else
-            {
-                HeadColor = new Material(HeadColor);
-                BodyColor = new Material(HeadColor);
-            }
+            if (!AI) RestoreEquipment();
         }
 
         private void RestoreEquipment()
@@ -52,6 +45,12 @@ namespace Avatar
             try
             {
                 var targetHat = inventory.AvatarHat;
+
+                if (targetHat == Hat.DEFAULT)
+                {
+                    AvatarHats.ForEach(e => e.SetEquipped(false));
+                    return;
+                }
             
                 AvatarHats.FirstOrDefault(e => e.AvatarHat == inventory.AvatarHat).SetEquipped(true);
             
@@ -73,6 +72,12 @@ namespace Avatar
             try
             {
                 var targetGlasses = inventory.AvatarGlasses;
+                
+                if (targetGlasses == Glasses.DEFAULT)
+                {
+                    AvatarGlasses.ForEach(e => e.SetEquipped(false));
+                    return;
+                }
 
                 AvatarGlasses.FirstOrDefault(e => e.AvatarGlasses == inventory.AvatarGlasses).SetEquipped(true);
             
