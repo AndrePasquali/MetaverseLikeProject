@@ -42,7 +42,7 @@ namespace Genies.Menu
         {
             if (_toggleEnabled) PanelCanvas.DOFade(1, 0.5F).OnComplete(() =>
                 {
-                    _optionsPanel.transform.DOPunchScale(new Vector3(0.2F, 0.1F, 0.1F), 0.15F, 2, 0.1F);
+                    _optionsPanel.transform.DOPunchScale(new Vector3(0.2F, 0.1F, 0.1F), 0.125F, 0, 0F);
                 });
 
             var buttonEnabled = _toggleEnabled;
