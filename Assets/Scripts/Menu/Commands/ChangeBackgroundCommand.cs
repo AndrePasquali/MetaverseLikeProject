@@ -13,6 +13,10 @@ namespace Genies.Menu
             _colorToChange = colorToChange;
         }
 
-        public void Execute() => _backgroundMaterial.color = _colorToChange;
+        public void Execute()
+        {
+            _backgroundMaterial.SetColor("_EmissionColor", _colorToChange);
+            _backgroundMaterial.color = _colorToChange;
+        }
     }
 }

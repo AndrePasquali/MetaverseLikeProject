@@ -145,6 +145,7 @@ namespace Genies.Menu
             _characterMaterial.color = Color.white;
             _characterHeadMaterial.color = Color.white;
             _backgroundMaterial.color = Color.black;
+            _backgroundMaterial.SetColor("_EmissionColor", Color.black);
         }
 
         private void OnDestroy() => ResetColors();
