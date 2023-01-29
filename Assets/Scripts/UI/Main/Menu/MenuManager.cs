@@ -10,7 +10,7 @@ namespace Genies.UI.Main
 {
     public sealed class MenuManager: MonoBehaviour
     {
-        [Header("Content Sections Parents")]
+        [Header("SECTION PARENTS")]
         [SerializeField] private Transform _backgroundSectionParent;
         [SerializeField] private Transform _bodySectionParent;
         [SerializeField] private Transform _headSectionParent;
@@ -18,8 +18,10 @@ namespace Genies.UI.Main
         [SerializeField] private Transform _hatSectionParent;
         [SerializeField] private Transform _glassesSectionParent;
         
+        [Header("ITEM SETTINGS")]
         [SerializeField] protected ItemSettings Items;
 
+        [Header("ITEM PREFABS")]
         [SerializeField] private MenuItemButton _itemPrefab;
         [SerializeField] private MenuItemButtonAnimation _itemAnimationPrefab;
         [SerializeField] private MenuItemButtonGlasses _itemGlassesPrefab;

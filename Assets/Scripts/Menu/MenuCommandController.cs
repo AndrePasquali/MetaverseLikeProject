@@ -3,6 +3,7 @@ using Avatar;
 using GameServerFake;
 using Genies.Inventory;
 using Genies.Menu.Enums;
+using Settings;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,7 +15,7 @@ namespace Genies.Menu
         private IMenuCommand _currentCommand;
         private InventoryManager _inventoryManager = new InventoryManager();
 
-        [Header("Dependencies")]
+        [Header("DEPENDENCIES")]
         [SerializeField] private Material _characterMaterial;
         [SerializeField] private Material _characterHeadMaterial;
         [SerializeField] private Material _backgroundMaterial;
@@ -22,6 +23,8 @@ namespace Genies.Menu
         [SerializeField] private List<MenuOptionButton> _menuOptionButtons;
         [SerializeField] private List<AvatarItemHat> _avatarItemHats;
         [SerializeField] private List<AvatarItemGlasses> _avatarItemGlasses;
+
+        [SerializeField] private ItemSettings _itemSettings;
 
         private void Start() => Initialize();
 
@@ -37,6 +40,67 @@ namespace Genies.Menu
         { 
             var optionCommand = new ChangeOptionCommand(actionType, _menuOptionButtons); 
             optionCommand.Execute();
+        }
+
+        public void Randomize()
+        {
+            RandomizedBackground();
+            RandomizeGlasses();
+            RandomizeBody();
+            RandomizeHead();
+            RandomizeHat();
+        }
+
+        private void RandomizedBackground()
+        {
+            var randomizedBackground = _itemSettings.BackgroundColors[Random.Range(0, _itemSettings.BackgroundColors.Length)];
+            
+            var backgroundColorCommand = new ChangeBackgroundCommand(_backgroundMaterial, randomizedBackground);
+            backgroundColorCommand.Execute();
+            
+            _inventoryManager.UpdateBackground(randomizedBackground, 0);
+        }
+
+        private void RandomizeBody()
+        {
+            var randomizedBody = _itemSettings.BodyColors[Random.Range(0, _itemSettings.BodyColors.Length)];
+            
+            var characterColorChangeCommand = new CharacterBodyCommand(_characterMaterial, randomizedBody);
+            characterColorChangeCommand.Execute();
+                    
+            _inventoryManager.UpdateBody(randomizedBody, 0);
+        }
+
+        private void RandomizeHead()
+        {
+            var randomizedHead = _itemSettings.HeadColors[Random.Range(0, _itemSettings.HeadColors.Length)];
+            
+            var characterColorChangeCommand = new CharacterHeadCommand(_characterHeadMaterial, randomizedHead);
+            characterColorChangeCommand.Execute();
+                    
+            _inventoryManager.UpdateHead(randomizedHead, 0);
+        }
+
+        private void RandomizeHat()
+        {
+            var randomizedHat = _itemSettings.Hats[Random.Range(0, _itemSettings.Hats.Length)];
+            
+            var characterHatCommand = new CharacterHatCommand(randomizedHat, _avatarItemHats);
+            characterHatCommand.Execute();
+                    
+            _inventoryManager.UpdateHat(randomizedHat, 0);
+        }
+
+        private void RandomizeGlasses()
+        {
+            var randomizedGlasses = _itemSettings.Glasses[Random.Range(0, _itemSettings.Glasses.Length)];
+            
+            var characterGlassesCommand = new CharacterGlassesCommand(randomizedGlasses, _avatarItemGlasses);
+            characterGlassesCommand.Execute();
+                    
+            _inventoryManager.UpdateGlasses(randomizedGlasses, 0);
+                    
+            HandleAnimation();
         }
 
         /// <summary>
