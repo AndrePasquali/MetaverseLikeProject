@@ -12,6 +12,9 @@ namespace Genies.Menu
         public Button M_Button => _button ?? (_button = GetComponent<Button>());
         public static event Action<MenuOption, MenuItemButton> OnItemButtonClick;
 
+        public Image Image => _image ?? (_image = GetComponent<Image>());
+        private Image _image;
+
         [SerializeField] private MenuOption _menuOption;
 
         private void Start()
@@ -22,11 +25,14 @@ namespace Genies.Menu
             });
         }
 
+        public void SetupOption(MenuOption option) => _menuOption = option;
+
         private void OnDestroy() => M_Button.onClick.RemoveAllListeners();
         public Color GetColor()
         {
             var image = GetComponent<Image>();
             return image.color;
         }
+        
     }
 }

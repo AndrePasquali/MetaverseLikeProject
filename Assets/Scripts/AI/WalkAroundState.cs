@@ -12,6 +12,7 @@ namespace Genies.AI
         private NavMeshAgent _agent;
         private Transform[] _wayPoints;
         private Transform _currentDestination;
+        private float _timeCounter;
 
         public WalkAroundState(AIStateMachine stateMachine, NavMeshAgent agent, Transform[] wayPoints)
         {
@@ -21,16 +22,20 @@ namespace Genies.AI
             _currentDestination = wayPoints[Random.Range(0, _wayPoints.Length - 1)];
         }
 
-        public async void UpdateState()
+        public void UpdateState()
         {
             _agent.SetDestination(_currentDestination.position);
 
-            if (HasReachedDestination() && !_agent.isStopped)
+            if (HasReachedDestination())
             {
                 _agent.isStopped = true;
-
-                await Task.Delay(TimeSpan.FromSeconds(10));
                 
+                _timeCounter += Time.deltaTime;
+                
+                if(_timeCounter <= 20F) return;
+
+                _timeCounter = 0;
+
                 _agent.isStopped = false;
                 
                 _stateMachine.ChangeState(_stateMachine.FollowPlayerState);

@@ -14,6 +14,7 @@ namespace Genies.AI
         private NavMeshAgent _agent;
         private Animator _animator;
         private List<string> _animation = new List<string>{"Wave", "Waving", "Excited", "Dancing", "Jumping", "HipHop"};
+        private float _timerCounter;
 
         public FollowPlayerState(AIStateMachine stateMachine, Transform player, NavMeshAgent agent, Animator animator)
         {
@@ -23,17 +24,22 @@ namespace Genies.AI
             _animator = animator;
         }
 
-        public async void UpdateState()
+        public void UpdateState()
         {
            _agent.destination = _player.position;
 
-            if (ReachedPlayer() && !_agent.isStopped)
+            if (ReachedPlayer())
             {
                 _agent.isStopped = true;
 
+                if(!_animator.IsInTransition(0))
                 _animator.SetTrigger(PickAnimation());
+
+                _timerCounter += Time.deltaTime;
                 
-                await Task.Delay(TimeSpan.FromSeconds(10));
+                if(_timerCounter < 20F) return;
+
+                _timerCounter = 0;
                 
                 _agent.isStopped = false;
 
