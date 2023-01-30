@@ -187,8 +187,7 @@ namespace Genies.Menu
         /// </summary>
         private void HandleAnimation()
         {
-            var allAnimationClipNames = new List<string>{"Wave", "Waving", "Dancing", "HipHop", "Jumping"};
-            var animationToPlay = allAnimationClipNames[Random.Range(0, allAnimationClipNames.Count)];
+            var animationToPlay = _itemSettings.Animations[Random.Range(0, _itemSettings.Animations.Length)];
             
             var probability = 3;
             var randomNumber = Random.Range(0, 10);
@@ -209,7 +208,7 @@ namespace Genies.Menu
             _characterMaterial.color = Color.white;
             _characterHeadMaterial.color = Color.white;
             _backgroundMaterial.color = Color.black;
-            _backgroundMaterial.SetColor("_EmissionColor", Color.black);
+            _backgroundMaterial.SetColor("_EmissionColor", Color.blue * 0.7F);
         }
 
         private void OnDestroy() => ResetColors();
