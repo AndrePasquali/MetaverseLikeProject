@@ -9,6 +9,13 @@ namespace Genies.AI
     [RequireComponent(typeof(NavMeshAgent))]
     public class AIStateMachine : MonoBehaviour
     {
+        public enum AIState
+        {
+            FOLLOW,
+            WALK
+        }
+
+        public AIState CurrentAIState;
         public Transform Player => _player ?? (_player = GameObject.FindWithTag("Player").transform);
         private Transform _player;
         public NavMeshAgent Agent => _agent ?? (_agent = GetComponent<NavMeshAgent>());
@@ -17,7 +24,7 @@ namespace Genies.AI
         [SerializeField] private Animator _animator;
 
         public IAIState CurrentState;
-        [HideInInspector] public FollowPlayerState FollowPlayerState;
+        public FollowPlayerState FollowPlayerState;
         [HideInInspector] public WalkAroundState WalkAroundState;
 
         public Transform[] Waypoints => _waypoints ??
@@ -35,6 +42,7 @@ namespace Genies.AI
         private void Update()
         {
             CurrentState.UpdateState();
+            
             UpdateAnimator();
         }
 
@@ -49,6 +57,14 @@ namespace Genies.AI
         public void ChangeState(IAIState newState)
         {
             CurrentState = newState;
+
+            if (newState is FollowPlayerState)
+                CurrentAIState = AIState.FOLLOW;
+            else if (newState is WalkAroundState)
+            {
+                transform.LookAt(Player);
+                CurrentAIState = AIState.WALK;
+            }
         }
 
         public void OnDestroy()

@@ -30,21 +30,20 @@ namespace Genies.AI
 
             if (ReachedPlayer())
             {
+                if(!_agent.isStopped) _animator.SetTrigger(PickAnimation());
                 _agent.isStopped = true;
-
-                if(!_animator.IsInTransition(0))
-                _animator.SetTrigger(PickAnimation());
-
                 _timerCounter += Time.deltaTime;
-                
-                if(_timerCounter < 20F) return;
-
+                if(_timerCounter < 5F) return;
                 _timerCounter = 0;
-                
                 _agent.isStopped = false;
-
-                _stateMachine.ChangeState(_stateMachine.WalkAroundState);
+                
+                ChangeState();
             }
+        }
+
+        public void ChangeState()
+        {
+            _stateMachine.ChangeState(_stateMachine.WalkAroundState);
         }
 
         public bool ReachedPlayer()
@@ -54,6 +53,6 @@ namespace Genies.AI
             return distanceToPlayer;
         }
 
-        private string PickAnimation() => _animation[Random.Range(0, _animation.Count)];
+        private string PickAnimation() => _animation[Random.Range(0, _animation.Count - 1)];
     }
 }
