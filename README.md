@@ -5,4 +5,4 @@
 
 ## VIDEO DEMONSTRATION
 
-![Watch the video](https://iili.io/H1075Hg.md.png)(https://youtube.com/shorts/WNh6WKv4ObU)
+!(https://youtube.com/shorts/WNh6WKv4ObU)
